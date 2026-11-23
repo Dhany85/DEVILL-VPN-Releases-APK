@@ -164,13 +164,12 @@ Semua URL proyek Shivaay di `libapp.so` diganti (panjang byte identik,
 - slug lama → `Dhany85/DEVILL-VPN-Releases-APK`
 - teks error "Could not reach GitHub…" (5 bahasa) → kata netral
 
-Repo itu **belum ada** (404), jadi cek update masih error sampai dibuat.
-Langkah sekali saja:
+Repo sudah dibuat dan berisi build 1.0.0:
+`https://github.com/Dhany85/DEVILL-VPN-Releases-APK` (Release `v1.0.0`).
 
-1. Buat repo publik `Dhany85/DEVILL-VPN-Releases-APK` (nama harus persis,
-   19 karakter — sudah tertanam di binary, tidak bisa diubah tanpa rebuild).
-2. Buat Release dengan tag `v1.0.1` dan lampirkan `DEVILL-VPN-1.0.1.apk`.
-3. (Opsional) tambah file `.github/updates.json` di branch `main`.
+Owner + nama repo = 31 karakter (`Dhany85` 7 + `/` + 23), harus tetap sama;
+ganti nama = rebuild APK. Rilis berikutnya: tag `v1.0.1` + lampirkan
+`DEVILL-VPN-1.0.1.apk`, jangan commit APK ke repo.
 
 Catatan: path modul Go di `libgojni.so` juga ikut jadi
 `github.com/Dhany85/DEVILL-VPN-Releases-APK/core@...` — itu hanya nama simbol,
