@@ -112,7 +112,7 @@ Build jadi: **`DEVILL-VPN-1.0.0.apk`** (di root project dan `build/`).
 | Versi | 1.0.0 (versionCode 2001) |
 | Ukuran | 15,8 MB |
 | Tanda tangan | v2 + v3, sertifikat baru `CN=DEVILL VPN` |
-| SHA-256 | `df3eda85878c6b21cbfa1637f9734ed4d3a0f436d402e3b0a2f45d99995aa4b7` |
+| SHA-256 | `46a26bb1b59b11447291f1424b0243a88a278c1e715abe9ea497b4673bb2d495` |
 
 ## Yang diubah (penggantian byte sama panjang)
 
@@ -153,27 +153,27 @@ Script juga punya `verify_output()`: build **gagal** kalau masih ada string
 ## Endpoint update → GitHub sendiri
 
 Semua URL proyek Shivaay di `libapp.so` diganti (panjang byte identik,
-`REPO = 'DhanyDevill/DEVILL-VPN-Releases'`, 31 karakter) supaya fitur
+`REPO = 'Dhany85/DEVILL-VPN-Releases-APK'`, 31 karakter) supaya fitur
 "Cek update" menunjuk ke repo sendiri:
 
-- `https://api.github.com/repos/DhanyDevill/DEVILL-VPN-Releases/releases/latest`
-- `https://github.com/DhanyDevill/DEVILL-VPN-Releases/releases` (+ `/releases`,
+- `https://api.github.com/repos/Dhany85/DEVILL-VPN-Releases-APK/releases/latest`
+- `https://github.com/Dhany85/DEVILL-VPN-Releases-APK/releases` (+ `/releases`,
   `/releases/tag/…`, `/releases/download/…`)
-- `https://raw.githubusercontent.com/DhanyDevill/DEVILL-VPN-Releases/HEAD/.github/updates.json`
-- `https://cdn.jsdelivr.net/gh/DhanyDevill/DEVILL-VPN-Releases@main/.github/updates.json`
-- slug lama → `DhanyDevill/DEVILL-VPN-Releases`
+- `https://raw.githubusercontent.com/Dhany85/DEVILL-VPN-Releases-APK/HEAD/.github/updates.json`
+- `https://cdn.jsdelivr.net/gh/Dhany85/DEVILL-VPN-Releases-APK@main/.github/updates.json`
+- slug lama → `Dhany85/DEVILL-VPN-Releases-APK`
 - teks error "Could not reach GitHub…" (5 bahasa) → kata netral
 
 Repo itu **belum ada** (404), jadi cek update masih error sampai dibuat.
 Langkah sekali saja:
 
-1. Buat repo publik `DhanyDevill/DEVILL-VPN-Releases` (nama harus persis,
+1. Buat repo publik `Dhany85/DEVILL-VPN-Releases-APK` (nama harus persis,
    19 karakter — sudah tertanam di binary, tidak bisa diubah tanpa rebuild).
 2. Buat Release dengan tag `v1.0.1` dan lampirkan `DEVILL-VPN-1.0.1.apk`.
 3. (Opsional) tambah file `.github/updates.json` di branch `main`.
 
 Catatan: path modul Go di `libgojni.so` juga ikut jadi
-`github.com/DhanyDevill/DEVILL-VPN-Releases/core@...` — itu hanya nama simbol,
+`github.com/Dhany85/DEVILL-VPN-Releases-APK/core@...` — itu hanya nama simbol,
 tidak dipakai untuk jaringan.
 
 ## Ikon & artwork
