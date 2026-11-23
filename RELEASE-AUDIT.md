@@ -1,7 +1,7 @@
 # Audit kesiapan rilis — DEVILL VPN 1.0.0
 
 Build yang diaudit: `build/DEVILL-VPN-1.0.0.apk`
-15.773.759 byte, SHA-256 `df3eda85878c6b21cbfa1637f9734ed4d3a0f436d402e3b0a2f45d99995aa4b7`
+15.773.754 byte, SHA-256 `d33f1d83636da17b07d2200e491832b82a4597f8d5efb548a900d084b53afd59`
 `com.devill.vpn`, versionCode 2001, minSdk 24, targetSdk 36, arm64-v8a.
 
 **Kesimpulan: belum siap rilis publik / Play Store.**
@@ -24,7 +24,7 @@ Siap untuk dipakai pribadi dan dibagikan sebagai APK sideload.
 
 | # | Temuan | Bukti | Saran |
 |---|---|---|---|
-| T1 | `allowBackup=true`; `core/account.json` (token akun terenkripsi) **tidak** dikecualikan dari cloud backup / device transfer | `AndroidManifest.xml`, `res/Qq.xml`, `res/4j.xml` | Set `allowBackup=false`, atau tambah `exclude` untuk `core/account.json` |
+| T1 | ~~`allowBackup=true`; token akun ikut cloud backup~~ **Sudah diperbaiki**: `allowBackup=false` dipaksa saat build | `aapt2 dump xmltree` → `allowBackup=false` | Selesai |
 | T2 | `QUERY_ALL_PACKAGES` (untuk daftar app split-tunneling) | manifest | Play butuh deklarasi + justifikasi; sering ditolak. Untuk sideload tidak masalah |
 | T3 | Field "Relay server" menerima Cloudflare Worker / `relay.php` milik pengguna. Login (email + password FxA) lewat relay itu kalau diisi | UI Settings + `relay.php` di libgojni | Nonaktifkan field, atau beri peringatan tegas di UI |
 | T4 | Endpoint update sekarang `DhanyDevill/DEVILL-VPN-Releases` — repo belum ada (404) | `curl` → 404 | Buat repo + release `v1.0.1` (lihat bawah) |
@@ -55,7 +55,7 @@ Siap untuk dipakai pribadi dan dibagikan sebagai APK sideload.
 
 1. Buat repo `DhanyDevill/DEVILL-VPN-Releases` (nama harus persis, 19 karakter,
    sudah tertanam di binary) + release `v1.0.1` berisi APK → fitur cek update hidup.
-2. `allowBackup=false` + kecualikan `core/account.json` (patch manifest, 1 baris).
+2. ~~`allowBackup=false`~~ selesai (dipaksa oleh `rebuild_apk.py`).
 3. Matikan field relay (patch di Dart AOT — perlu cari string UI-nya; belum tentu bisa).
 4. Tulis privacy policy singkat di repo: data apa yang dikirim dan ke mana.
 5. Umumkan sebagai klien tidak resmi, atau—lebih aman—jangan distribusikan publik.

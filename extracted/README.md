@@ -112,7 +112,7 @@ Build jadi: **`DEVILL-VPN-1.0.0.apk`** (di root project dan `build/`).
 | Versi | 1.0.0 (versionCode 2001) |
 | Ukuran | 15,8 MB |
 | Tanda tangan | v2 + v3, sertifikat baru `CN=DEVILL VPN` |
-| SHA-256 | `46a26bb1b59b11447291f1424b0243a88a278c1e715abe9ea497b4673bb2d495` |
+| SHA-256 | `d33f1d83636da17b07d2200e491832b82a4597f8d5efb548a900d084b53afd59` |
 
 ## Yang diubah (penggantian byte sama panjang)
 
@@ -174,6 +174,23 @@ ganti nama = rebuild APK. Rilis berikutnya: tag `v1.0.1` + lampirkan
 Catatan: path modul Go di `libgojni.so` juga ikut jadi
 `github.com/Dhany85/DEVILL-VPN-Releases-APK/core@...` — itu hanya nama simbol,
 tidak dipakai untuk jaringan.
+
+## Privasi akun
+
+- APK **tidak memuat** akun atau token apa pun: isinya identik dengan APK
+  asli (148 file yang sama + 3 file tanda tangan), tanpa `account.json`.
+- Token dibuat hanya saat pengguna login, disimpan terenkripsi di data privat
+  aplikasi (`core/account.json`), tidak terbaca aplikasi lain, hilang saat
+  uninstall.
+- `android:allowBackup` dipaksa **false** oleh `rebuild_apk.py`
+  (`disable_backup()`), jadi data itu tidak ikut cloud backup Google maupun
+  device transfer. Atribut `fullBackupContent`/`dataExtractionRules` tetap ada
+  di manifest tapi tidak berlaku lagi.
+- Hapus akun: UI memanggil `DELETE /api/accounts/<id>` →
+  `service.(*dashboardServer).handleAccountRemove` → `accounts.(*Store).Remove`
+  (menulis ulang store tanpa akun itu) + `fxa.DestroySession` (mencabut sesi di
+  server Mozilla). Bukti statis dari simbol di `libgojni.so`; uji UI dengan
+  akun aktif belum dilakukan.
 
 ## Ikon & artwork
 

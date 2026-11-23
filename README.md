@@ -51,6 +51,13 @@ unzip -t build/DEVILL-VPN-1.0.0.apk
 daftar putih (nama class Java `com.shivaay.firefoxvpn.*` + JNI `Tun2Socks`,
 yang tidak bisa diubah tanpa source).
 
+## Privasi akun
+
+APK tidak membawa akun/token siapa pun. Token dibuat saat login, disimpan
+terenkripsi di data privat aplikasi, dan `android:allowBackup` dipaksa `false`
+saat build (`disable_backup()` di `rebuild_apk.py`) supaya token tidak ikut
+cloud backup atau transfer HP.
+
 ## Update otomatis
 
 Fitur "Cek update" di binary menunjuk ke repo ini:

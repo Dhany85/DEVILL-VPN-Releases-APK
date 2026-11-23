@@ -31,6 +31,8 @@ import sys
 import zipfile
 import zlib
 
+from patch_manifest import decode_all, read_pool
+
 ALIGN = 4
 DEAD = 'https://127.0.0.1:9/'      # unreachable, but a syntactically valid URL
 REPO = 'Dhany85/DEVILL-VPN-Releases-APK'
@@ -149,6 +151,43 @@ ALLOWED_LEFTOVERS = {
 }
 
 
+def disable_backup(data):
+    """Set android:allowBackup="false" in the binary manifest.
+
+    Account tokens live in the app's private data dir; a cloud backup would
+    copy them off the device.  The attribute is a 4-byte typed value, so this
+    flips the data word in place -- no chunk sizes change.
+    """
+    names = decode_all(data, read_pool(data, 8))
+    try:
+        want = names.index('allowBackup')
+    except ValueError:
+        raise SystemExit('AndroidManifest.xml: no allowBackup attribute')
+
+    off = 8
+    while off + 8 <= len(data):
+        typ, hsz, size = struct.unpack_from('<HHI', data, off)
+        if typ == 0x0102:                       # RES_XML_START_ELEMENT
+            ext = off + hsz
+            a_start, a_size, a_count = struct.unpack_from('<HHH', data, ext + 8)
+            for i in range(a_count):
+                a = ext + a_start + i * a_size
+                if struct.unpack_from('<I', data, a + 4)[0] != want:
+                    continue
+                t_off = a + 12                  # typedValue.size/res0
+                dtype = data[t_off + 3]
+                if dtype != 0x12:               # TYPE_INT_BOOLEAN
+                    raise SystemExit('allowBackup is not a boolean')
+                if struct.unpack_from('<I', data, a + 16)[0] == 0:
+                    return data
+                struct.pack_into('<I', data, a + 16, 0)
+                return data
+        if size < 8:
+            break
+        off += size
+    raise SystemExit('AndroidManifest.xml: allowBackup attribute not found')
+
+
 def deflate_raw(data, level=9):
     """Raw DEFLATE stream (no zlib header/trailer) - required by the ZIP spec."""
     co = zlib.compressobj(level, zlib.DEFLATED, -15)
@@ -217,6 +256,9 @@ def main():
                 if n:
                     data = data.replace(old, new)
                     counts[(info.filename, old)] = n
+
+            if info.filename == 'AndroidManifest.xml':
+                data = disable_backup(bytearray(data))
 
             method = info.compress_type
             if method == zipfile.ZIP_DEFLATED:
