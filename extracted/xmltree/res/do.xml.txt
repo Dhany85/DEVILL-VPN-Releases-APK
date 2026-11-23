@@ -1,0 +1,15 @@
+11-23 12:10:36.631  9522  9522 W ResourceType: CREATING STRING CACHE OF 96 bytes
+N: android=http://schemas.android.com/apk/res/android (line=7)
+  E: FrameLayout (line=7)
+    A: http://schemas.android.com/apk/res/android:id(0x010100d0)=@0x7f07005e
+    A: http://schemas.android.com/apk/res/android:padding(0x010100d5)=4.000000dp
+    A: http://schemas.android.com/apk/res/android:layout_width(0x010100f4)=-1
+    A: http://schemas.android.com/apk/res/android:layout_height(0x010100f5)=-1
+      E: ImageView (line=16)
+        A: http://schemas.android.com/apk/res/android:layout_gravity(0x010100b3)=0x00000011
+        A: http://schemas.android.com/apk/res/android:id(0x010100d0)=@0x7f07005d
+        A: http://schemas.android.com/apk/res/android:layout_width(0x010100f4)=-1
+        A: http://schemas.android.com/apk/res/android:layout_height(0x010100f5)=-1
+        A: http://schemas.android.com/apk/res/android:src(0x01010119)=@0x7f06001e
+        A: http://schemas.android.com/apk/res/android:scaleType(0x0101011d)=3
+        A: http://schemas.android.com/apk/res/android:contentDescription(0x01010273)=@0x7f0b0011

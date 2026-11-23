@@ -1,0 +1,12 @@
+11-23 12:10:36.208  9497  9497 W ResourceType: CREATING STRING CACHE OF 104 bytes
+N: android=http://schemas.android.com/apk/res/android (line=0)
+  N: aapt=http://schemas.android.com/aapt (line=0)
+    E: gradient (line=40)
+      A: http://schemas.android.com/apk/res/android:startColor(0x0101019d)=#40ffffff
+      A: http://schemas.android.com/apk/res/android:endColor(0x0101019e)=#00ffffff
+      A: http://schemas.android.com/apk/res/android:angle(0x010101a0)=0.000000e+00
+      A: http://schemas.android.com/apk/res/android:type(0x010101a1)=0
+      A: http://schemas.android.com/apk/res/android:startX(0x01010510)=48
+      A: http://schemas.android.com/apk/res/android:startY(0x01010511)=6
+      A: http://schemas.android.com/apk/res/android:endX(0x01010512)=48
+      A: http://schemas.android.com/apk/res/android:endY(0x01010513)=37

@@ -1,0 +1,33 @@
+11-23 12:10:36.332  9503  9503 W ResourceType: CREATING STRING CACHE OF 176 bytes
+N: android=http://schemas.android.com/apk/res/android (line=12)
+  N: aapt=http://schemas.android.com/aapt (line=12)
+    E: vector (line=12)
+      A: http://schemas.android.com/apk/res/android:height(0x01010155)=96.000000dp
+      A: http://schemas.android.com/apk/res/android:width(0x01010159)=96.000000dp
+      A: http://schemas.android.com/apk/res/android:viewportWidth(0x01010402)=96
+      A: http://schemas.android.com/apk/res/android:viewportHeight(0x01010403)=96
+        E: path (line=16)
+          A: http://schemas.android.com/apk/res/android:fillColor(0x01010404)=#33737a94
+          A: http://schemas.android.com/apk/res/android:pathData(0x01010405)="M48,1a47,47 0,1 1,0 94a47,47 0,1 1,0 -94z" (Raw: "M48,1a47,47 0,1 1,0 94a47,47 0,1 1,0 -94z")
+        E: path (line=18)
+          A: http://schemas.android.com/apk/res/android:fillColor(0x01010404)=@0x7f060002
+          A: http://schemas.android.com/apk/res/android:pathData(0x01010405)="M48,4a44,44 0,1 1,0 88a44,44 0,1 1,0 -88z" (Raw: "M48,4a44,44 0,1 1,0 88a44,44 0,1 1,0 -88z")
+        E: path (line=31)
+          A: http://schemas.android.com/apk/res/android:fillColor(0x01010404)=@0x7f060003
+          A: http://schemas.android.com/apk/res/android:pathData(0x01010405)="M48,6c-21,0 -37.5,13 -39.5,31c11,-9 24,-13 39.5,-13s28.5,4 39.5,13c-2,-18 -18.5,-31 -39.5,-31z" (Raw: "M48,6c-21,0 -37.5,13 -39.5,31c11,-9 24,-13 39.5,-13s28.5,4 39.5,13c-2,-18 -18.5,-31 -39.5,-31z")
+        E: group (line=48)
+          A: http://schemas.android.com/apk/res/android:scaleX(0x01010324)=2.6
+          A: http://schemas.android.com/apk/res/android:scaleY(0x01010325)=2.6
+          A: http://schemas.android.com/apk/res/android:translateX(0x0101045a)=16.8
+          A: http://schemas.android.com/apk/res/android:translateY(0x0101045b)=15.15
+            E: path (line=51)
+              A: http://schemas.android.com/apk/res/android:fillColor(0x01010404)=#ffffffff
+              A: http://schemas.android.com/apk/res/android:pathData(0x01010405)="M12,2L4,5v6c0,5.25 3.4,10.15 8,11.5c4.6,-1.35 8,-6.25 8,-11.5V5L12,2z" (Raw: "M12,2L4,5v6c0,5.25 3.4,10.15 8,11.5c4.6,-1.35 8,-6.25 8,-11.5V5L12,2z")
+        E: group (line=57)
+          A: http://schemas.android.com/apk/res/android:scaleX(0x01010324)=1.1
+          A: http://schemas.android.com/apk/res/android:scaleY(0x01010325)=1.1
+          A: http://schemas.android.com/apk/res/android:translateX(0x0101045a)=34.8
+          A: http://schemas.android.com/apk/res/android:translateY(0x0101045b)=33.3
+            E: path (line=60)
+              A: http://schemas.android.com/apk/res/android:fillColor(0x01010404)=#ff4b5168
+              A: http://schemas.android.com/apk/res/android:pathData(0x01010405)="M13,3h-2v10h2L13,3zM17.83,5.17l-1.42,1.42C17.99,7.86 19,9.81 19,12c0,3.87 -3.13,7 -7,7s-7,-3.13 -7,-7c0,-2.19 1.01,-4.14 2.58,-5.42L6.17,5.17C4.23,6.82 3,9.26 3,12c0,4.97 4.03,9 9,9s9,-4.03 9,-9c0,-2.74 -1.23,-5.18 -3.17,-6.83z" (Raw: "M13,3h-2v10h2L13,3zM17.83,5.17l-1.42,1.42C17.99,7.86 19,9.81 19,12c0,3.87 -3.13,7 -7,7s-7,-3.13 -7,-7c0,-2.19 1.01,-4.14 2.58,-5.42L6.17,5.17C4.23,6.82 3,9.26 3,12c0,4.97 4.03,9 9,9s9,-4.03 9,-9c0,-2.74 -1.23,-5.18 -3.17,-6.83z")

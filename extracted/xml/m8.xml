@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" android:height="96dp" android:width="96dp" android:viewportWidth="96" android:viewportHeight="96">
+  <path android:fillColor="#330db37c" android:pathData="M48,1a47,47 0,1 1,0 94a47,47 0,1 1,0 -94z" />
+  <path android:fillColor="@drawable/$widget_button_on__0" android:pathData="M48,4a44,44 0,1 1,0 88a44,44 0,1 1,0 -88z" />
+  <path android:fillColor="@drawable/$widget_button_on__1" android:pathData="M48,6c-21,0 -37.5,13 -39.5,31c11,-9 24,-13 39.5,-13s28.5,4 39.5,13c-2,-18 -18.5,-31 -39.5,-31z" />
+  <group android:scaleX="2.6" android:scaleY="2.6" android:translateX="16.8" android:translateY="15.15">
+    <path android:fillColor="#ffffffff" android:pathData="M12,2L4,5v6c0,5.25 3.4,10.15 8,11.5c4.6,-1.35 8,-6.25 8,-11.5V5L12,2z" />
+  </group>
+  <path android:pathData="M36.2,46.5l8.45,8.45l16.25,-16.9" android:strokeColor="#ff047857" android:strokeWidth="6.5" android:strokeLineCap="1" android:strokeLineJoin="1" />
+</vector>

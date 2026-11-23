@@ -1,0 +1,21 @@
+# binaries & build output
+*.apk
+*.zip
+*.idsig
+/build/*
+!/build/artwork/
+/build/artwork/*
+!/build/artwork/*.png
+
+# signing material — never commit
+*.jks
+*.keystore
+
+# decoded APK tree (36 MB, kode asli)
+/extracted/apk/
+/extracted/tools/__pycache__/
+__pycache__/
+
+# artwork lama
+/extracted/artwork/icon-source-dark.png
+/extracted/artwork/icon-source-darkcard.png

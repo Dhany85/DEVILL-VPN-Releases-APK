@@ -1,0 +1,14 @@
+11-23 12:10:35.966  9482  9482 W ResourceType: CREATING STRING CACHE OF 112 bytes
+N: android=http://schemas.android.com/apk/res/android (line=18)
+  E: appwidget-provider (line=18)
+    A: http://schemas.android.com/apk/res/android:description(0x01010020)=@0x7f0b0010
+    A: http://schemas.android.com/apk/res/android:minWidth(0x0101013f)=40.000000dp
+    A: http://schemas.android.com/apk/res/android:minHeight(0x01010140)=40.000000dp
+    A: http://schemas.android.com/apk/res/android:updatePeriodMillis(0x01010250)=0
+    A: http://schemas.android.com/apk/res/android:initialLayout(0x01010251)=@0x7f090009
+    A: http://schemas.android.com/apk/res/android:previewImage(0x010102da)=@0x7f06001e
+    A: http://schemas.android.com/apk/res/android:resizeMode(0x01010363)=0x00000000
+    A: http://schemas.android.com/apk/res/android:widgetCategory(0x010103c4)=0x00000001
+    A: http://schemas.android.com/apk/res/android:previewLayout(0x01010627)=@0x7f09000a
+    A: http://schemas.android.com/apk/res/android:targetCellWidth(0x01010634)=1
+    A: http://schemas.android.com/apk/res/android:targetCellHeight(0x01010635)=1

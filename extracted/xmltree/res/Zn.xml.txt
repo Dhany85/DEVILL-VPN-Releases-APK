@@ -1,0 +1,5 @@
+11-23 12:10:36.510  9512  9512 W ResourceType: CREATING STRING CACHE OF 40 bytes
+N: android=http://schemas.android.com/apk/res/android (line=3)
+  E: layer-list (line=3)
+      E: item (line=4)
+        A: http://schemas.android.com/apk/res/android:drawable(0x01010199)=?0x01010031
