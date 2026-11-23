@@ -36,6 +36,8 @@ from patch_manifest import decode_all, read_pool
 ALIGN = 4
 DEAD = 'https://127.0.0.1:9/'      # unreachable, but a syntactically valid URL
 REPO = 'Dhany85/DEVILL-VPN-Releases-APK'
+VERSION_NAME = '1.0.1'
+VERSION_CODE = 2002
 
 APP = 'lib/arm64-v8a/libapp.so'
 GO = 'lib/arm64-v8a/libgojni.so'
@@ -59,6 +61,9 @@ def u16(s):
 
 
 REPLACEMENTS = {
+    'AndroidManifest.xml': [
+        ('1.0.0'.encode('utf-16-le'), VERSION_NAME.encode('utf-16-le')),
+    ],
     ARSC: [
         (b'Shivaay VPN', b'DEVILL VPN '),
     ],
@@ -122,6 +127,7 @@ REPLACEMENTS = {
 # Exact number of hits in the *unmodified* source file.  A mismatch means the
 # source tree changed and the replacement list needs another look.
 EXPECTED = {
+    ('AndroidManifest.xml', '1.0.0'.encode('utf-16-le')): 1,
     (ARSC, b'Shivaay VPN'): 1,
     (APP, b'Shivaay VPN'): 20,
     (APP, u16('Shivaay VPN')): 26,
@@ -151,19 +157,13 @@ ALLOWED_LEFTOVERS = {
 }
 
 
-def disable_backup(data):
-    """Set android:allowBackup="false" in the binary manifest.
-
-    Account tokens live in the app's private data dir; a cloud backup would
-    copy them off the device.  The attribute is a 4-byte typed value, so this
-    flips the data word in place -- no chunk sizes change.
-    """
+def _manifest_attrs(data, name):
+    """Offsets of the attribute records named `name` in a binary manifest."""
     names = decode_all(data, read_pool(data, 8))
     try:
-        want = names.index('allowBackup')
+        want = names.index(name)
     except ValueError:
-        raise SystemExit('AndroidManifest.xml: no allowBackup attribute')
-
+        return
     off = 8
     while off + 8 <= len(data):
         typ, hsz, size = struct.unpack_from('<HHI', data, off)
@@ -172,20 +172,44 @@ def disable_backup(data):
             a_start, a_size, a_count = struct.unpack_from('<HHH', data, ext + 8)
             for i in range(a_count):
                 a = ext + a_start + i * a_size
-                if struct.unpack_from('<I', data, a + 4)[0] != want:
-                    continue
-                t_off = a + 12                  # typedValue.size/res0
-                dtype = data[t_off + 3]
-                if dtype != 0x12:               # TYPE_INT_BOOLEAN
-                    raise SystemExit('allowBackup is not a boolean')
-                if struct.unpack_from('<I', data, a + 16)[0] == 0:
-                    return data
-                struct.pack_into('<I', data, a + 16, 0)
-                return data
+                if struct.unpack_from('<I', data, a + 4)[0] == want:
+                    yield a
         if size < 8:
-            break
+            return
         off += size
-    raise SystemExit('AndroidManifest.xml: allowBackup attribute not found')
+
+
+def _set_typed(data, attr, dtype, value):
+    """Write an attribute's typed value: size=8, res0=0, type, 32-bit data."""
+    struct.pack_into('<BB', data, attr + 14, 0, dtype)
+    struct.pack_into('<I', data, attr + 16, value)
+
+
+def disable_backup(data):
+    """allowBackup=false: a cloud backup would copy account tokens off-device."""
+    for a in _manifest_attrs(data, 'allowBackup'):
+        _set_typed(data, a, 0x12, 0)            # TYPE_INT_BOOLEAN
+        return data
+    raise SystemExit('AndroidManifest.xml: no allowBackup attribute')
+
+
+def set_version_code(data, code):
+    """Bump versionCode so the installer/updater sees a newer build."""
+    for a in _manifest_attrs(data, 'versionCode'):
+        _set_typed(data, a, 0x10, code)         # TYPE_INT_DEC
+        return data
+    raise SystemExit('AndroidManifest.xml: no versionCode attribute')
+
+
+def bump_app_version(data):
+    """Dart-side version strings (user agent + version constant).
+
+    Skips "1.0.0.x" text: those are DNS resolver IPs, not versions.
+    """
+    data, n = re.subn(rb'1\.0\.0(?![0-9.])', VERSION_NAME.encode(), data)
+    if n != 2:
+        raise SystemExit('libapp.so: expected 2 version strings, found %d' % n)
+    return bytearray(data)                      # manifest patch needs writable
 
 
 def deflate_raw(data, level=9):
@@ -257,8 +281,12 @@ def main():
                     data = data.replace(old, new)
                     counts[(info.filename, old)] = n
 
+            if info.filename == APP:
+                data = bump_app_version(data)
             if info.filename == 'AndroidManifest.xml':
-                data = disable_backup(bytearray(data))
+                data = bytearray(data)
+                data = set_version_code(data, VERSION_CODE)
+                data = disable_backup(data)
 
             method = info.compress_type
             if method == zipfile.ZIP_DEFLATED:

@@ -39,7 +39,7 @@ DEVILL VPN/
 |---|---|
 | Nama | Shivaay VPN |
 | Package | `com.shivaay.firefoxvpn` |
-| Versi | 1.0.0 (versionCode 2001) |
+| Versi | 1.0.1 (versionCode 2002) |
 | minSdk / targetSdk | 24 (Android 7.0) / 36 (Android 16) |
 | ABI | arm64-v8a saja |
 | Ukuran APK | 15,3 MB |
@@ -103,16 +103,16 @@ Artinya: untuk mengembangkan UI/logika, kamu butuh **source project Flutter + Go
 
 # Rebrand → DEVILL VPN
 
-Build jadi: **`DEVILL-VPN-1.0.0.apk`** (di root project dan `build/`).
+Build jadi: **`DEVILL-VPN-1.0.1.apk`** (di root project dan `build/`).
 
 | Item | Nilai |
 |---|---|
 | Nama aplikasi | `DEVILL VPN` |
 | Package (app id) | `com.devill.vpn` — **beda** dari Shivaay, jadi bisa terpasang berdampingan |
-| Versi | 1.0.0 (versionCode 2001) |
+| Versi | 1.0.1 (versionCode 2002) |
 | Ukuran | 15,8 MB |
 | Tanda tangan | v2 + v3, sertifikat baru `CN=DEVILL VPN` |
-| SHA-256 | `d33f1d83636da17b07d2200e491832b82a4597f8d5efb548a900d084b53afd59` |
+| SHA-256 | `3755e543ca74111125216f5906e1ebb4a5a1e9f040bd173c35537dcb9b6700f7` |
 
 ## Yang diubah (penggantian byte sama panjang)
 
@@ -164,8 +164,8 @@ Semua URL proyek Shivaay di `libapp.so` diganti (panjang byte identik,
 - slug lama → `Dhany85/DEVILL-VPN-Releases-APK`
 - teks error "Could not reach GitHub…" (5 bahasa) → kata netral
 
-Repo sudah dibuat dan berisi build 1.0.0:
-`https://github.com/Dhany85/DEVILL-VPN-Releases-APK` (Release `v1.0.0`).
+Repo sudah dibuat dan berisi build 1.0.1:
+`https://github.com/Dhany85/DEVILL-VPN-Releases-APK` (Release `v1.0.1`, sebelumnya `v1.0.0`).
 
 Owner + nama repo = 31 karakter (`Dhany85` 7 + `/` + 23), harus tetap sama;
 ganti nama = rebuild APK. Rilis berikutnya: tag `v1.0.1` + lampirkan

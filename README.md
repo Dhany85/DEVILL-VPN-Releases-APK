@@ -4,7 +4,8 @@ Rebrand + rebuild pipeline untuk APK `com.devill.vpn` (nama, ikon, teks, endpoin
 dibuat dengan menambal byte APK Flutter/Go tanpa mengubah panjang string.
 
 - Package: `com.devill.vpn` (terpisah dari `com.shivaay.firefoxvpn`)
-- Versi: 1.0.0 (versionCode 2001), minSdk 24, targetSdk 36, arm64-v8a
+- Versi: 1.0.1 (versionCode 2002), minSdk 24, targetSdk 36, arm64-v8a
+- Versi dinaikkan tiap rilis lewat `VERSION_NAME` / `VERSION_CODE` di `rebuild_apk.py`
 - Tanda tangan: v2 + v3, sertifikat `CN=DEVILL VPN` (keystore **tidak** di repo)
 
 ## Status rilis
@@ -40,11 +41,11 @@ python3 extracted/tools/rebuild_apk.py <base.apk> extracted/apk build/DEVILL-VPN
 # 3. tanda tangan
 apksigner sign --ks build/devill.jks --ks-key-alias devill \
   --ks-pass pass:*** --key-pass pass:*** \
-  --out build/DEVILL-VPN-1.0.0.apk build/DEVILL-VPN-unsigned.apk
+  --out build/DEVILL-VPN-1.0.1.apk build/DEVILL-VPN-unsigned.apk
 
 # 4. verifikasi
-apksigner verify --print-certs build/DEVILL-VPN-1.0.0.apk
-unzip -t build/DEVILL-VPN-1.0.0.apk
+apksigner verify --print-certs build/DEVILL-VPN-1.0.1.apk
+unzip -t build/DEVILL-VPN-1.0.1.apk
 ```
 
 `rebuild_apk.py` menolak build kalau masih ada string `shivaay` di luar

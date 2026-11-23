@@ -1,8 +1,8 @@
-# Audit kesiapan rilis — DEVILL VPN 1.0.0
+# Audit kesiapan rilis — DEVILL VPN 1.0.1
 
-Build yang diaudit: `build/DEVILL-VPN-1.0.0.apk`
-15.773.754 byte, SHA-256 `d33f1d83636da17b07d2200e491832b82a4597f8d5efb548a900d084b53afd59`
-`com.devill.vpn`, versionCode 2001, minSdk 24, targetSdk 36, arm64-v8a.
+Build yang diaudit: `build/DEVILL-VPN-1.0.1.apk`
+15.773.754 byte, SHA-256 `3755e543ca74111125216f5906e1ebb4a5a1e9f040bd173c35537dcb9b6700f7`
+`com.devill.vpn`, versionCode 2002, minSdk 24, targetSdk 36, arm64-v8a.
 
 **Kesimpulan: belum siap rilis publik / Play Store.**
 Siap untuk dipakai pribadi dan dibagikan sebagai APK sideload.
@@ -68,5 +68,5 @@ aplikasi dari source sendiri (bukan klien Mozilla), bukan menambal APK ini.
 Cara pakai cepat:
 
 ```
-adb install -r DEVILL-VPN-1.0.0.apk     # atau tap APK di Download
+adb install -r DEVILL-VPN-1.0.1.apk     # atau tap APK di Download
 ```
